@@ -11,7 +11,7 @@ library(tidyverse)
 
 ## Problem 1
 
-# Read and cleaning the data
+### Reading and cleaning the data
 
 ```{r}
 sub_df =
@@ -30,3 +30,35 @@ sub_df =
     )
   )
 ```
+
+### Description of Dataset
+
+
+Write a short paragraph about this dataset – explain briefly what variables the dataset contains, describe your data cleaning steps so far, and give the dimension (rows x columns) of the resulting dataset. Are these data tidy?
+
+
+The dataset "sub_df" consists of NYC transit subway lines, stations, and the descriptions of station characteritsics, such as location, entry, entrance type, vending, and ADA compliance. The following are the key variables:
+
+  * `line` is a categorical variable describing the NYC transit subway lines.
+  * `station_name`is a categorical variable describing the name of the station.
+  * `station_latitude` is a continuous variable describing the latitude of the station in degrees.
+  * `station_longitude` is a continuous variable describing the longitude of the station in degrees.
+  * `route1`-`route11` are categorical variables describing the subway routes that stop at the station.
+  * `entry`is a logical variable variable describing the whether there is an entry to the station. 
+  * `entry_type`is categorical variables describing the entry types of the station. 
+  * `vending` is a categorical variable whether there is vending or not in the station.
+  * `ada`is a categorical describing whether there is ADA compliance in the station.
+
+This dataset contains **`r nrow(sub_df)`** rows and **`r ncol(sub_df)`** columns.
+
+
+
+
+Answer the following questions using these data:
+
+How many distinct stations are there? Note that stations are identified both by name and by line (e.g. 125th St 8th Avenue; 125st Broadway; 125st Lenox); the distinct function may be useful here.
+How many stations are ADA compliant?
+What proportion of station entrances / exits without vending allow entrance?
+Reformat data so that route number and route name are distinct variables. How many distinct stations serve the A train? Of the stations that serve the A train, how many are ADA compliant
+
+
