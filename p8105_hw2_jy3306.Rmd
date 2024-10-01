@@ -8,6 +8,7 @@ output: github_document
 ```{r, echo = FALSE, message = FALSE}
 library(tidyverse)
 library(dplyr)
+library(readxl)
 ```
 
 ## Problem 1
@@ -71,4 +72,14 @@ sub_new_df =
 There are `r nrow(distinct(filter(sub_new_df, route == "A", na.rm = TRUE), line, station_name))` distinct stations that serve the A train. 
 
 Of the stations that serve the A train, `r nrow(distinct(filter(sub_new_df, route == "A" & ada == "TRUE", na.rm = TRUE), line, station_name))` are ADA compliant.
+
+## Problem 2
+
+### Reading and cleaning Mr. Trash Wheel dataset
+
+```{r}
+trash_df = read_excel("data/202409 Trash Wheel Collection Data.xlsx")
+
+
+```
 
