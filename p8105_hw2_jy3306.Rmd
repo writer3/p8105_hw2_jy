@@ -49,9 +49,7 @@ The dataset "sub_df" consists of NYC transit subway lines, stations, and the des
   * `vending` is a categorical variable whether there is vending or not in the station.
   * `ada`is a categorical describing whether there is ADA compliance in the station.
 
-This dataset contains **`r nrow(sub_df)`** rows and **`r ncol(sub_df)`** columns.
-
-
+This dataset contains **`r nrow(sub_df)`** rows and **`r ncol(sub_df)`** columns. This data is tidy.
 
 
 Answer the following questions using these data:
