@@ -50,15 +50,25 @@ The dataset was cleaned, first, using the `janitor` function to convert the vari
 
 There are `r nrow(distinct(sub_df, line, station_name))` distinct stations in this dataset. 
 
-
-How many stations are ADA compliant?
 There are `r nrow(distinct(filter(sub_df, ada == TRUE), line, station_name))` stations that are ADA compliant.
 
-`r sum(sub_df$ada, na.rm = TRUE)` stations are ADA compliant.
-
-What proportion of station entrances / exits without vending allow entrance?
+The proportion of station entrances / exits without vending allowing entrance is `r nrow(filter(sub_df, entry == 1 & vending == "NO")) / nrow(filter(sub_df, vending == "NO"))`.
 
 
-Reformat data so that route number and route name are distinct variables. How many distinct stations serve the A train? Of the stations that serve the A train, how many are ADA compliant
+Reformatting data so that that route number and route name are distinct variables. 
 
+```{r}
+sub_new_df = 
+  sub_df |> 
+  mutate(across(starts_with("route"), as.character)) |> 
+  pivot_longer(
+    cols = route1:route11,
+    names_to = "routes_number",
+    values_to = "route"
+  )
+```
+
+There are `r nrow(distinct(filter(sub_new_df, route == "A", na.rm = TRUE), line, station_name))` distinct stations that serve the A train. 
+
+Of the stations that serve the A train, `r nrow(distinct(filter(sub_new_df, route == "A" & ada == "TRUE", na.rm = TRUE), line, station_name))` are ADA compliant.
 
