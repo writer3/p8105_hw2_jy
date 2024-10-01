@@ -1,0 +1,23 @@
+---
+title: "p8105_HW2"
+author: "John Yang"
+date: "2024-10-02"
+output: github_document
+---
+
+```{r, echo = FALSE, message = FALSE}
+library(tidyverse)
+library(readxl)
+```
+
+## Problem 1
+
+Read and cleaning the data
+
+Read and clean the data; retain line, station, name, station latitude / longitude, routes served, entry, vending, entrance type, and ADA compliance. Convert the entry variable from character (YES vs NO) to a logical variable (the ifelse or case_match function may be useful).
+
+```{r}
+subway_df =
+  read_csv("./data/NYC_Transit_Subway_Entrance_And_Exit_Data.csv")
+
+```
