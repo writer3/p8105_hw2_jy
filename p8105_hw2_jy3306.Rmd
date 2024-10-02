@@ -225,7 +225,8 @@ bakeoff_combined_df =
   merge(results_df) |> 
   mutate(
     series = as.character(series),
-    first_name = as.character(baker)) |> 
+    first_name = as.character(baker)
+  ) |> 
   select(-baker) |> 
   relocate(series, episode, first_name, last_name) |> 
   arrange(series, episode)
@@ -270,13 +271,15 @@ The bakeoff_combined_df dataset combines `bakers`, `bakes`, and `results` datase
 ```{r}
 winners_tb =
   bakeoff_combined_df |> 
-  filter(result == "WINNER" | result == "STARBAKER") |> 
-  filter(series >= 5) |> 
+  filter(result == "WINNER" | result == "STARBAKER", series >= 5) |> 
   select(series, episode, result) |> 
-  arrange(series,episode)
+  arrange(series, episode)
+
 
 print(winners_tb)
 ```
+Table consist of 1 winner from each season. All episodes are 10 as expected since the winners are announced in episode 10.
+
 
 Import, clean, tidy, and organize the viewership data in viewers.csv. Show the first 10 rows of this dataset. What was the average viewership in Season 1? In Season 5?
 
