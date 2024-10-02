@@ -280,9 +280,6 @@ print(winners_tb)
 ```
 Table consist of 1 winner from each season. All episodes are 10 as expected since the winners are announced in episode 10. We don't see the star bakers because they are most likely the winners.
 
-
-Import, clean, tidy, and organize the viewership data in viewers.csv. Show the first 10 rows of this dataset. What was the average viewership in Season 1? In Season 5?
-
 ### Import, clean, tidy, and wrangle viewers dataset
 
 ```{r}
