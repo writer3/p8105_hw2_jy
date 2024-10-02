@@ -90,7 +90,8 @@ mr_df =
     volume = "volume_cubic_yards") |> 
   mutate(
     sports_balls = as.integer(round(sports_balls)), 
-    trash_wheel = "mr"
+    trash_wheel = "mr",
+    year = as.numeric(year)
     ) |> 
   relocate(trash_wheel)
 ```
@@ -108,7 +109,10 @@ prof_df =
   rename(
     weight = "weight_tons",
     volume = "volume_cubic_yards") |> 
-  mutate(trash_wheel = "professor")|> 
+  mutate(
+    trash_wheel = "professor", 
+    year = as.numeric(year)
+    ) |> 
   relocate(trash_wheel)
 ```
 
@@ -124,12 +128,20 @@ gwynnda_df =
   rename(
     weight = "weight_tons",
     volume = "volume_cubic_yards")|> 
-  mutate(trash_wheel = "gwynnda")|> 
+  mutate(
+    trash_wheel = "gwynnda",
+    year = as.numeric(year)
+    )|> 
   relocate(trash_wheel)
 ```
 
 
-###Combining Trash Wheel datasets
-```{r}
+### Combining Trash Wheel datasets
 
+```{r}
+trash_wheel_df = 
+  full_join (mr_df, prof_df) |> 
+  full_join (x = _, y = gwynnda_df)
 ```
+
+
