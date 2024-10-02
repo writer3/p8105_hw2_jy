@@ -75,11 +75,61 @@ Of the stations that serve the A train, `r nrow(distinct(filter(sub_new_df, rout
 
 ## Problem 2
 
+
 ### Reading and cleaning Mr. Trash Wheel dataset
 
 ```{r}
-trash_df = read_excel("data/202409 Trash Wheel Collection Data.xlsx")
-
-
+mr_df = 
+  read_excel("data/202409 Trash Wheel Collection Data.xlsx", 
+             sheet = "Mr. Trash Wheel",
+             range = "A2:N653",
+             na = c("NA", "", ".")) |> 
+  janitor::clean_names() |> 
+  rename(
+    weight = "weight_tons",
+    volume = "volume_cubic_yards") |> 
+  mutate(
+    sports_balls = as.integer(round(sports_balls)), 
+    trash_wheel = "mr"
+    ) |> 
+  relocate(trash_wheel)
 ```
 
+
+### Reading and cleaning Professor Trash Wheel dataset
+
+```{r}
+prof_df = 
+  read_excel("data/202409 Trash Wheel Collection Data.xlsx", 
+             sheet = "Professor Trash Wheel",
+             range = "A2:M118",
+             na = c("NA", "", ".")) |> 
+  janitor::clean_names() |> 
+  rename(
+    weight = "weight_tons",
+    volume = "volume_cubic_yards") |> 
+  mutate(trash_wheel = "professor")|> 
+  relocate(trash_wheel)
+```
+
+### Reading and cleaning Gwynnda Trash Wheel dataset
+
+```{r}
+gwynnda_df = 
+  read_excel("data/202409 Trash Wheel Collection Data.xlsx", 
+             sheet = "Gwynnda Trash Wheel",
+             range = "A2:L265",
+             na = c("NA", "", ".")) |> 
+  janitor::clean_names() |> 
+  rename(
+    weight = "weight_tons",
+    volume = "volume_cubic_yards")|> 
+  mutate(trash_wheel = "gwynnda")|> 
+  relocate(trash_wheel)
+```
+
+
+###Combining Trash Wheel datasets
+```{r}
+
+```
