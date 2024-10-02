@@ -35,7 +35,7 @@ sub_df =
 
 ### Description of Dataset
 
-The dataset "sub_df" consists of NYC transit subway lines, stations, and the descriptions of station characteritsics, such as location, entry, entrance type, vending, and ADA compliance. The following are the key variables:
+The dataset "sub_df" consists of NYC transit subway lines, stations, and the descriptions of station characteristics, such as location, entry, entrance type, vending, and ADA compliance. The following are the key variables:
 
   * `line` is a categorical variable describing the NYC transit subway lines.
   * `station_name`is a categorical variable describing the name of the station.
@@ -144,4 +144,29 @@ trash_wheel_df =
   full_join (x = _, y = gwynnda_df)
 ```
 
+### Description of Dataset
 
+The dataset "trash_wheel_df" consists of information on the trash_wheel type, dumpster number, date of collection, amount of total litter and litter type. The following are the key variables:
+
+  * `trash_wheel` is a character variable that was added in describing the type of the trash_wheel.
+  * `dumpster`is a numerical variable describing the dumpster number.
+  * `month` is a character variable describing the month of collection.
+  * `year` is numerical variable describing the year of collection.
+  * `date` is a POSIXct data describing the year, month, and date of collection.
+  * `weight`is a numerical variable variable describing weight of litters in tons. 
+  * `volume`is a numerical variable describing the volume of litters in cubic yards.
+  * `plastic_bottles` is a numerical variable describing the amount of plastic bottles.
+  * `polystyrene` is a numerical variable describing the amount of polystyrene.
+  * `cigarette_butts` is a numerical variable describing the amount of cigarette butts.
+  * `glass_bottles` is a numerical variable describing the amount of glass bottles.
+  * `plastic_bags` is a numerical variable describing the amount of plastic bags.
+  * `wrappers` is a numerical variable describing the amount of wrappers.
+  * `sports_balls` is a numerical variable in integers describing the amount of sports_balls.
+  * `homes_powered` is a numerical variable describing the number of homes powered based on the amount of trash.
+
+
+## Write a paragraph about these data; you are encouraged to use inline R. Be sure to note the number of observations in the resulting dataset, and give examples of key variables. For available data, what was the total weight of trash collected by Professor Trash Wheel? What was the total number of cigarette butts collected by Gwynnda in June of 2022?
+
+This dataset contains **`r nrow(trash_wheel_df)`** rows and **`r ncol(trash_wheel_df)`** columns. The total weight of trash collected by Professor Trash Wheel was `r sum(filter(trash_wheel_df, trash_wheel == "professor")$weight, na.rm = TRUE)` tons.
+
+The total number of cigarette butts collected by Gwynnda in June of 2022 was `r sum(filter(trash_wheel_df, trash_wheel == "gwynnda" & month == "June" & year == 2022)$cigarette_butts, na.rm = TRUE)`.
